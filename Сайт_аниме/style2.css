@@ -1,0 +1,43 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: white;
+}
+ol li {
+	color: beige;
+	background-repeat: no-repeat;
+	list-style: none;
+	float: left;
+	margin: 10px;
+	padding: 0;
+	
+}
+ol li:hover{
+	color: blue;
+	opacity: 0.6;
+}
+.one{
+	background-color: black;
+	color: #70A856;
+	text-align: center;
+}
+.two{
+	border: 5px solid #006400;
+	font-size: 30px;
+	padding: 0;
+	background-color: #70A856;
+	height: 100px;
+}
+.three{
+	font-size: 40px;
+	color: #70A856;
+	text-align: center;
+	background-color: black;
+	height: 1000;
+}
+.for{
+	margin: 40px;
+}
+.bir{
+	color:#70A856;
+}
