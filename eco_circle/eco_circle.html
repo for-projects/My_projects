@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoCircle KBTU — Жасыл болашақ бізден басталады</title>
+<meta property="og:title" content="EcoCircle KBTU — Жасыл болашақ бізден басталады">
+<meta property="og:description" content="Пластик пен қағазды сұрыптаңыз, Green Coins жинаңыз және KBTU-ды жасыл болашаққа апарыңыз.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://og-image.vercel.app/EcoCircle%20KBTU.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="KBTU кампусында қалдықты сұрыптаңыз, Green Coins жинаңыз, марапаттар алыңыз. SDG 12 · ESG.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #1a3a1f;
+  --green-mid: #2d6a35;
+  --green-light: #4a9e55;
+  --green-pale: #c8e6c9;
+  --green-wash: #f0f7f0;
+  --cream: #faf8f2;
+  --gold: #c9a84c;
+  --text: #1a1a1a;
+  --text-muted: #5a6a5c;
+  --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* FULL PAGE CANVAS */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* All sections above canvas */
+nav, #home, #about, #how-wrap, #rewards, #lb-wrap, #faq-wrap, #partners, #contact-wrap, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(250,248,242,0.90); backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(45,106,53,0.12);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 20px rgba(26,58,31,0.1); }
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--green-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo span { color: var(--green-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green-mid); }
+.nav-cta { background: var(--green-dark) !important; color: var(--white) !important; padding: 0.5rem 1.2rem; border-radius: 99px; font-size: 0.82rem !important; font-weight: 500 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--green-mid) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--green-dark); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: rgba(250,248,242,0.98); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--green-pale);
+  padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; z-index: 999;
+  animation: slideDown 0.25s ease;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--text-muted); text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid var(--green-pale); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--green-mid); }
+.mobile-menu a:last-child { border-bottom: none; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* HERO */
+#home {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 6rem 2rem 4rem;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(240,247,240,0.85); border: 1px solid var(--green-pale);
+  color: var(--green-mid); font-size: 0.75rem; font-weight: 500;
+  padding: 0.4rem 1rem; border-radius: 99px; margin-bottom: 2rem;
+  letter-spacing: 0.04em; animation: fadeUp 0.6s ease both; backdrop-filter: blur(8px);
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+h1.hero-title {
+  font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem,7vw,5rem);
+  line-height: 1.08; color: var(--green-dark); max-width: 800px; margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+h1.hero-title em { font-style: italic; color: var(--green-light); }
+.hero-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; animation: fadeUp 0.7s 0.2s ease both; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.7s 0.3s ease both; }
+.btn-primary { background: var(--green-dark); color: var(--white); padding: 0.85rem 2rem; border-radius: 99px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background 0.2s,transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); }
+.btn-outline { border: 1.5px solid var(--green-mid); color: var(--green-mid); padding: 0.85rem 2rem; border-radius: 99px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+.btn-outline:hover { background: rgba(240,247,240,0.7); }
+.hero-stats { display: flex; gap: 3rem; margin-top: 4rem; animation: fadeUp 0.7s 0.4s ease both; flex-wrap: wrap; justify-content: center; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--green-dark); }
+.hero-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+/* PROGRESS */
+.progress-section { background: rgba(240,247,240,0.88); border: 1px solid var(--green-pale); border-radius: 20px; padding: 2rem 2.5rem; margin-top: 2.5rem; backdrop-filter: blur(8px); }
+.progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.progress-title { font-weight: 500; font-size: 0.95rem; color: var(--green-dark); }
+.progress-nums { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--green-mid); }
+.progress-bar-bg { height: 12px; background: var(--green-pale); border-radius: 99px; overflow: hidden; margin-bottom: 0.5rem; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg,var(--green-mid),var(--green-light)); border-radius: 99px; width: 0%; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
+.progress-sub { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
+
+/* SHARED */
+.inner { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+.section-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green-mid); background: rgba(240,247,240,0.9); border: 1px solid var(--green-pale); padding: 0.3rem 0.8rem; border-radius: 99px; margin-bottom: 1rem; }
+h2.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem,4vw,3rem); color: var(--green-dark); line-height: 1.15; margin-bottom: 1rem; }
+h2.section-title em { font-style: italic; color: var(--green-light); }
+.section-desc { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; font-weight: 300; }
+
+/* ABOUT */
+#about { background: rgba(255,255,255,0.88); backdrop-filter: blur(6px); }
+.about-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.problem-card { background: rgba(255,245,245,0.95); border: 1px solid #fecaca; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.problem-card h3 { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #dc2626; margin-bottom: 0.5rem; }
+.problem-card p { font-size: 0.95rem; color: #7f1d1d; line-height: 1.6; font-weight: 300; }
+.solution-card { background: rgba(240,247,240,0.95); border: 1px solid var(--green-pale); border-radius: 16px; padding: 1.5rem; }
+.solution-card h3 { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-mid); margin-bottom: 0.5rem; }
+.solution-card p { font-size: 0.95rem; color: var(--green-dark); line-height: 1.6; font-weight: 300; }
+.about-visual { background: var(--green-dark); border-radius: 24px; padding: 2.5rem; color: white; position: relative; overflow: hidden; }
+.about-visual::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: rgba(74,158,85,0.3); border-radius: 50%; }
+.about-visual-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 0.5rem; position: relative; }
+.about-visual-sub { font-size: 0.85rem; opacity: 0.7; margin-bottom: 2rem; font-weight: 300; position: relative; }
+.sdg-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--green-dark); padding: 0.6rem 1.2rem; border-radius: 99px; font-size: 0.8rem; font-weight: 500; position: relative; }
+.esg-items { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; position: relative; }
+.esg-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.9; }
+.esg-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; flex-shrink: 0; }
+
+/* HOW */
+#how-wrap { background: rgba(250,248,242,0.85); backdrop-filter: blur(4px); }
+.steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 2.5rem; left: 12%; right: 12%; height: 1px; background: var(--green-pale); z-index: 0; }
+.step-card { text-align: center; position: relative; z-index: 1; }
+.step-icon { width: 5rem; height: 5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1.2rem; border: 2px solid var(--green-pale); background: rgba(250,248,242,0.92); position: relative; transition: transform 0.3s,border-color 0.3s; }
+.step-card:hover .step-icon { transform: scale(1.1); border-color: var(--green-light); }
+.step-num { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; background: var(--green-dark); color: white; border-radius: 50%; font-size: 0.65rem; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+.step-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--green-dark); margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+/* REWARDS */
+#rewards { background: rgba(26,58,31,0.95); backdrop-filter: blur(6px); }
+.rewards-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+.rewards-inner .section-tag { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: var(--green-pale); }
+.rewards-inner h2.section-title { color: white; }
+.rewards-inner h2.section-title em { color: var(--gold); }
+.rewards-inner .section-desc { color: rgba(255,255,255,0.6); }
+.coin-rate { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 2.5rem 0; }
+.coin-rate-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 1.2rem; text-align: center; transition: background 0.2s; }
+.coin-rate-item:hover { background: rgba(255,255,255,0.12); }
+.coin-rate-num { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 0.3rem; }
+.coin-rate-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+.rewards-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.reward-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; transition: background 0.2s,transform 0.2s; }
+.reward-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.reward-coins { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--gold); white-space: nowrap; min-width: 80px; }
+.reward-desc { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+
+/* CALCULATOR */
+.calculator-section { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 2rem; margin-top: 2.5rem; }
+.calc-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: white; margin-bottom: 0.4rem; }
+.calc-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; font-weight: 300; }
+.calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.calc-field label { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+.calc-field input[type="range"] { width: 100%; accent-color: var(--gold); cursor: pointer; }
+.calc-field .range-val { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--gold); margin-top: 0.3rem; }
+.calc-result { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 14px; padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.calc-result-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+.calc-result-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--gold); }
+.calc-result-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* LEADERBOARD */
+#lb-wrap { background: rgba(250,248,242,0.85); backdrop-filter: blur(4px); }
+.leaderboard-table { margin-top: 2.5rem; border: 1px solid var(--green-pale); border-radius: 16px; overflow: hidden; }
+.lb-header { display: grid; grid-template-columns: 60px 1fr 120px 120px; gap: 1rem; padding: 0.8rem 1.5rem; background: var(--green-dark); color: rgba(255,255,255,0.7); font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.lb-row { display: grid; grid-template-columns: 60px 1fr 120px 120px; gap: 1rem; padding: 1rem 1.5rem; align-items: center; border-bottom: 1px solid var(--green-pale); background: rgba(255,255,255,0.88); transition: background 0.15s; }
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: rgba(240,247,240,0.95); }
+.lb-row.top1 { background: linear-gradient(90deg,rgba(255,251,235,0.95),rgba(255,255,255,0.88)); }
+.lb-rank { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--text-muted); }
+.lb-row.top1 .lb-rank { color: var(--gold); }
+.lb-team { font-weight: 500; font-size: 0.95rem; color: var(--green-dark); display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.lb-kg { font-size: 0.9rem; color: var(--text-muted); }
+.lb-coins { font-weight: 500; color: var(--green-mid); font-size: 0.9rem; }
+.lb-badge { display: inline-block; font-size: 0.65rem; background: var(--gold); color: var(--green-dark); padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+
+/* FAQ */
+#faq-wrap { background: rgba(255,255,255,0.88); backdrop-filter: blur(6px); }
+.faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item { border: 1px solid var(--green-pale); border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.92); }
+.faq-question { width: 100%; background: none; border: none; padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'DM Sans',sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); text-align: left; transition: background 0.15s; }
+.faq-question:hover { background: rgba(240,247,240,0.8); }
+.faq-icon { font-size: 1.1rem; color: var(--green-light); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease,padding 0.35s ease; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; padding: 0 1.5rem; }
+.faq-item.open .faq-answer { max-height: 220px; padding: 0 1.5rem 1.2rem; }
+
+/* PARTNERS */
+#partners { background: rgba(250,248,242,0.9); backdrop-filter: blur(4px); }
+.partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+.partner-card { border: 1px solid var(--green-pale); border-radius: 16px; padding: 2rem; display: flex; gap: 1.2rem; align-items: flex-start; background: rgba(255,255,255,0.85); transition: box-shadow 0.2s,transform 0.2s; }
+.partner-card:hover { box-shadow: 0 4px 24px rgba(45,106,53,0.08); transform: translateY(-2px); }
+.partner-icon { width: 52px; height: 52px; background: var(--green-wash); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.partner-name { font-weight: 500; color: var(--green-dark); margin-bottom: 0.3rem; font-size: 0.95rem; }
+.partner-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+.partner-link { display: inline-block; margin-top: 0.5rem; font-size: 0.8rem; color: var(--green-mid); text-decoration: none; font-weight: 500; }
+.partner-link:hover { text-decoration: underline; }
+
+/* TEAM */
+#contact-wrap { background: rgba(250,248,242,0.85); backdrop-filter: blur(4px); }
+.team-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.team-card { background: rgba(255,255,255,0.88); border: 1px solid var(--green-pale); border-radius: 16px; padding: 1.5rem; text-align: center; transition: transform 0.2s,box-shadow 0.2s; }
+.team-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(26,58,31,0.1); }
+.team-avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--green-dark); color: white; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display',serif; font-size: 1.5rem; margin: 0 auto 1rem; }
+.team-name { font-weight: 500; color: var(--green-dark); margin-bottom: 0.2rem; font-size: 0.95rem; }
+.team-role { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
+.contact-box { margin-top: 3rem; background: rgba(240,247,240,0.9); border: 1px solid var(--green-pale); border-radius: 16px; padding: 2rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+.contact-box h3 { font-family: 'DM Serif Display',serif; font-size: 1.5rem; color: var(--green-dark); margin-bottom: 0.5rem; }
+.contact-box p { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+.tg-box { background: var(--green-dark); border-radius: 16px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.tg-qr { width: 80px; height: 80px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+.tg-info { color: white; }
+.tg-info h4 { font-family: 'DM Serif Display',serif; font-size: 1.1rem; margin-bottom: 0.3rem; }
+.tg-info p { font-size: 0.82rem; opacity: 0.65; font-weight: 300; line-height: 1.5; }
+.tg-link { margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); color: white; padding: 0.4rem 1rem; border-radius: 99px; font-size: 0.8rem; text-decoration: none; transition: background 0.2s; }
+.tg-link:hover { background: rgba(255,255,255,0.22); }
+
+/* FOOTER */
+footer { background: rgba(26,58,31,0.95); backdrop-filter: blur(6px); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; font-size: 0.82rem; }
+footer strong { color: white; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease,transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.countup { transition: all 0.3s; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .about-inner { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid::before { display: none; }
+  .coin-rate { grid-template-columns: 1fr; }
+  .rewards-grid { grid-template-columns: 1fr; }
+  .calc-inputs { grid-template-columns: 1fr; }
+  .lb-header,.lb-row { grid-template-columns: 40px 1fr 80px; }
+  .lb-coins-col { display: none; }
+  .partners-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 1.5rem; }
+  .tg-box { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo">♻ Eco<span>Circle</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Жоба туралы</a></li>
+    <li><a href="#how">Қалай жұмыс істейді</a></li>
+    <li><a href="#rewards">Green Coins</a></li>
+    <li><a href="#leaderboard">Үздіктер</a></li>
+    <li><a href="#faq">Сұрақ-жауап</a></li>
+    <li><a href="#contact" class="nav-cta">Команда</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мәзір">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="closeMobile()">Жоба туралы</a>
+  <a href="#how" onclick="closeMobile()">Қалай жұмыс істейді</a>
+  <a href="#rewards" onclick="closeMobile()">Green Coins</a>
+  <a href="#leaderboard" onclick="closeMobile()">Үздіктер</a>
+  <a href="#faq" onclick="closeMobile()">Сұрақ-жауап</a>
+  <a href="#partners" onclick="closeMobile()">Серіктестер</a>
+  <a href="#contact" onclick="closeMobile()">Команда</a>
+</div>
+
+<!-- HERO -->
+<div id="home">
+  <div class="hero-badge">ESG · SDG 12 · KBTU жобасы</div>
+  <h1 class="hero-title">Университетті<br><em>таза сақтайық</em><br>бірге</h1>
+  <p class="hero-sub">Пластик пен қағазды сұрыптаңыз, Green Coins жинаңыз және KBTU-ды жасыл болашаққа бірге апарайық.</p>
+  <div class="hero-btns">
+    <a href="#how" class="btn-primary">Қатысу жолы →</a>
+    <a href="#about" class="btn-outline">Жоба туралы</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num countup" data-target="4">0</div>
+      <div class="hero-stat-label">Эко-бокс орны</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num countup" data-target="250" data-suffix=" кг">0</div>
+      <div class="hero-stat-label">Осы айда жиналды</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">SDG</div>
+      <div class="hero-stat-label">12-мақсат</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Студенттер үшін</div>
+    </div>
+  </div>
+  <div class="progress-section fade-in" style="max-width:700px;width:100%;margin-top:3rem;">
+    <div class="progress-header">
+      <div class="progress-title">🎯 Маусымдық мақсат — 500 кг</div>
+      <div class="progress-nums"><span id="prog-num">0</span> / 500 кг</div>
+    </div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    <div class="progress-sub">Апта сайын жаңартылады · Соңғы жаңарту: 21 сәуір 2026</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-inner">
+    <div class="fade-in">
+      <span class="section-tag">Жоба туралы</span>
+      <h2 class="section-title">EcoCircle<br><em>дегеніміз не?</em></h2>
+      <div class="problem-card" style="margin-top:1.5rem;">
+        <h3>⚠ Мәселе</h3>
+        <p>KBTU кампусында күн сайын жүздеген пластик бөтелке мен қағаз жалпы себетке тасталады. Бұл ESG талаптарына сай емес және қоршаған ортаға зиянды.</p>
+      </div>
+      <div class="solution-card">
+        <h3>✓ Шешім — EcoCircle</h3>
+        <p>Қайта өңделетін қалдықтарды сұрыптауды, студенттерді ынталандыруды және серіктес кәсіпорынға жеткізуді қамтамасыз ететін тұтас цифрлық жүйе.</p>
+      </div>
+      <p class="section-desc" style="margin-top:1.2rem;">Біздің мақсатымыз — KBTU студенттерін экологиялық жауапкершілікке тәрбиелеу және университетті БҰҰ SDG 12 талаптарына сәйкес жасыл кампусқа айналдыру.</p>
+    </div>
+    <div class="about-visual fade-in">
+      <div class="about-visual-title">ESG қағидаттары</div>
+      <div class="about-visual-sub">EcoCircle осы үш бағытты ұстанады</div>
+      <span class="sdg-badge">★ SDG 12 — Жауапты тұтыну</span>
+      <div class="esg-items">
+        <div class="esg-item"><div class="esg-dot"></div><div><strong>E — Қоршаған орта:</strong> Қалдықты азайт, табиғатты қорға</div></div>
+        <div class="esg-item"><div class="esg-dot"></div><div><strong>S — Қоғам:</strong> Студенттерге дағды қалыптастыр</div></div>
+        <div class="esg-item"><div class="esg-dot"></div><div><strong>G — Басқару:</strong> Ашық есеп, мөлдір жүйе</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how-wrap">
+  <div id="how" class="inner fade-in">
+    <span class="section-tag">Үдеріс</span>
+    <h2 class="section-title">4 қадамда — <em>оңай!</em></h2>
+    <p class="section-desc">Пластик немесе қағаз тапсыру — тек 2 минут. Ал марапат ұзаққа созылады!</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">📦<div class="step-num">1</div></div>
+        <div class="step-title">Жина</div>
+        <p class="step-desc">Пластик бөтелке, қағаз немесе картон жинап, кампустағы эко-боксқа апар.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📱<div class="step-num">2</div></div>
+        <div class="step-title">Сканерле</div>
+        <p class="step-desc">Эко-бокстағы QR-кодты телефонмен сканерлеп, студент куәлігіңмен кір.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🪙<div class="step-num">3</div></div>
+        <div class="step-title">Балл жина</div>
+        <p class="step-desc">Есебіңізге автоматты түрде Green Coins есептеледі. Үздіктер тізімінде өсесіз!</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🎁<div class="step-num">4</div></div>
+        <div class="step-title">Марапат ал</div>
+        <p class="step-desc">Монеттерге кофе жеңілдігі, кітапхана мерзімін ұзарту немесе EcoCircle сыйлығын ал!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REWARDS -->
+<div id="rewards">
+  <div class="rewards-inner fade-in">
+    <span class="section-tag">Green Coins</span>
+    <h2 class="section-title" style="color:white;">Сіздің <em>жасыл валютаңыз</em></h2>
+    <p class="section-desc" style="color:rgba(255,255,255,0.6);">Әр қоқыс — балл. Әр балл — марапат. Жасыл іс — пайдаға айналады.</p>
+    <div class="coin-rate">
+      <div class="coin-rate-item"><div class="coin-rate-num">10</div><div class="coin-rate-label">Coin / кг пластик</div></div>
+      <div class="coin-rate-item"><div class="coin-rate-num">5</div><div class="coin-rate-label">Coin / кг қағаз</div></div>
+      <div class="coin-rate-item"><div class="coin-rate-num">+50</div><div class="coin-rate-label">Бонус — аптаның белсендісі</div></div>
+    </div>
+    <div class="calculator-section">
+      <div class="calc-title">🧮 Монета есептегіші</div>
+      <div class="calc-sub">Қанша қалдық тапсырсам, қанша Coin аламын?</div>
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Пластик (кг)</label>
+          <input type="range" id="plastic-slider" min="0" max="20" value="2" step="0.5">
+          <div class="range-val"><span id="plastic-val">2</span> кг</div>
+        </div>
+        <div class="calc-field">
+          <label>Қағаз (кг)</label>
+          <input type="range" id="paper-slider" min="0" max="20" value="1" step="0.5">
+          <div class="range-val"><span id="paper-val">1</span> кг</div>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div>
+          <div class="calc-result-label">Сіз аласыз</div>
+          <div class="calc-result-num" id="coin-result">25 🪙</div>
+          <div class="calc-result-sub" id="reward-hint">50 Coin жинасаңыз — кофеге жеңілдік!</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:0.3rem;">Баламасы</div>
+          <div style="font-size:1rem;color:rgba(255,255,255,0.7);font-weight:500;" id="coin-equiv">Кофеге жақындаудасыз ☕</div>
+        </div>
+      </div>
+    </div>
+    <div class="rewards-grid" style="margin-top:1.5rem;">
+      <div class="reward-item"><div class="reward-coins">50 ☕</div><div class="reward-desc">Кампус кофесіне жеңілдік</div></div>
+      <div class="reward-item"><div class="reward-coins">100 📚</div><div class="reward-desc">Кітапхана мерзімін ұзарту</div></div>
+      <div class="reward-item"><div class="reward-coins">200 🎽</div><div class="reward-desc">EcoCircle брендтік сыйлық</div></div>
+      <div class="reward-item"><div class="reward-coins">500 🏆</div><div class="reward-desc">Семестрдің «Эко-чемпионы» атағы</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="lb-wrap">
+  <div id="leaderboard" class="inner fade-in">
+    <span class="section-tag">Үздіктер</span>
+    <h2 class="section-title">Осы аптаның <em>жасыл көшбасшылары</em></h2>
+    <p class="section-desc">Тобыңыз тізімде бар ма? Бірге жоғарылайық!</p>
+    <div class="leaderboard-table">
+      <div class="lb-header">
+        <div>#</div><div>Топ</div><div>Жиналған кг</div><div class="lb-coins-col">Green Coins</div>
+      </div>
+      <div class="lb-row top1">
+        <div class="lb-rank">1</div>
+        <div class="lb-team">IS <span class="lb-badge">Үздік</span></div>
+        <div class="lb-kg countup" data-target="48" data-suffix=" кг">0</div>
+        <div class="lb-coins lb-coins-col countup" data-target="480" data-suffix=" Coin">0</div>
+      </div>
+      <div class="lb-row">
+        <div class="lb-rank">2</div>
+        <div class="lb-team">Automation and Control</div>
+        <div class="lb-kg countup" data-target="35" data-suffix=" кг">0</div>
+        <div class="lb-coins lb-coins-col countup" data-target="350" data-suffix=" Coin">0</div>
+      </div>
+      <div class="lb-row">
+        <div class="lb-rank">3</div>
+        <div class="lb-team">CSS</div>
+        <div class="lb-kg countup" data-target="28" data-suffix=" кг">0</div>
+        <div class="lb-coins lb-coins-col countup" data-target="280" data-suffix=" Coin">0</div>
+      </div>
+      <div class="lb-row">
+        <div class="lb-rank">4</div>
+        <div class="lb-team">Менеджмент</div>
+        <div class="lb-kg countup" data-target="21" data-suffix=" кг">0</div>
+        <div class="lb-coins lb-coins-col countup" data-target="210" data-suffix=" Coin">0</div>
+      </div>
+      <div class="lb-row">
+        <div class="lb-rank">5</div>
+        <div class="lb-team">Robotics</div>
+        <div class="lb-kg countup" data-target="14" data-suffix=" кг">0</div>
+        <div class="lb-coins lb-coins-col countup" data-target="140" data-suffix=" Coin">0</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.88rem;color:var(--text-muted);font-weight:300;">Тобыңыз тізімде жоқ па? Бүгін бастаңыз — бір бөтелке де маңызды!</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div id="faq-wrap">
+  <div id="faq" class="inner fade-in">
+    <span class="section-tag">Сұрақ-жауап</span>
+    <h2 class="section-title">Сізде <em>сұрақ бар ма?</em></h2>
+    <p class="section-desc">Жиі қойылатын сұрақтар мен жауаптар</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Қандай қалдықтар қабылданады?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Пластик бөтелкелер (PET, HDPE), қағаз, картон және алюминий банкалар қабылданады. Ластанған, иіс шығаратын немесе тағамдық қалдықтар қабылданбайды. Қалдықты алдын ала жуып, кептіріп әкелу ұсынылады.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Эко-бокстар кампустың қай жерінде орналасқан?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Қазіргі уақытта 4 нүктеде: 1-ғимарат кіреберісі, асхана маңы, кітапхана алдында және спорт залы жанында орналасқан. Жаңа нүктелер жоспарлануда — Telegram арнамызды бақылаңыз!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Green Coins монеттерін қалай жұмсаймын?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">EcoCircle Telegram ботына кіріп, «Марапат алу» опциясын таңдаңыз. Кофе жеңілдігі үшін кассирге QR-кодыңызды көрсетіңіз. Кітапхана мерзімін ұзарту үшін кітапханашыға студент куәлігіңізді беріп, EcoCircle деп айтыңыз.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Аптаның белсендісі болу үшін не істеу керек?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Аптада ең көп қалдық тапсырған студент немесе топ автоматты түрде «Аптаның белсендісі» атанып, +50 бонус Coin алады. Үздіктер тізімі жексенбі күні жаңартылады.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Жиналған қалдық қайда жіберіледі?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Барлық жиналған қалдық серіктес қайта өңдеу зауытына жеткізіледі. Пластик бөтелкелер жаңа өнімге айналса, қағаз өнімдері қайта пайдаланылады. Ай сайын ашық есеп жарияланады.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">EcoCircle-ге қалай қосылуға болады?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Telegram ботымызды іздеп (@ecocircle_kbtu_bot), студент куәлігіңізбен тіркеліңіз. Содан кейін кез келген эко-боксқа қалдық алып барып, QR-кодты сканерлеңіз.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS -->
+<div id="partners">
+  <div class="inner fade-in">
+    <span class="section-tag">Серіктестер</span>
+    <h2 class="section-title">Біздің <em>серіктестер</em></h2>
+    <p class="section-desc">EcoCircle жалғыз емес — бізбен бірге жасыл болашақ орнататындар бар.</p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-icon">♻️</div>
+        <div>
+          <div class="partner-name">GreenPak Recycling — Алматы</div>
+          <p class="partner-desc">Жиналған қайта өңделетін қалдықтарды тұрақты негізде қабылдап, өңдейді. Пластик пен қағаз жаңа өнімге айналады. Апта сайын жинап кетеді.</p>
+          <a href="#" class="partner-link">greenpak.kz →</a>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🏛</div>
+        <div>
+          <div class="partner-name">KBTU ESG бағдарламасы</div>
+          <p class="partner-desc">Университет басшылығы студент бастамаларын қолдайды. ESG қағидаттары — KBTU стратегиясының ажырамас бөлігі. Ресми серіктестік 2026 жылдан бастап іске асты.</p>
+          <a href="https://kbtu.edu.kz" target="_blank" class="partner-link">kbtu.edu.kz →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div id="contact-wrap">
+  <div id="contact" class="inner fade-in">
+    <span class="section-tag">Команда</span>
+    <h2 class="section-title">Бізді <em>таныңыз</em></h2>
+    <p class="section-desc">KBTU студенттері — жасыл болашақтың негізін қалаушылар.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:#1a3a1f;">Е</div>
+        <div class="team-name">Ерасыл</div>
+        <div class="team-role">Жоба жетекшісі · Стратегия</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#2d6a35;">Э</div>
+        <div class="team-name">Элизат</div>
+        <div class="team-role">IT · Сайт әзірлеуші</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#4a9e55;">Д</div>
+        <div class="team-name">Дария</div>
+        <div class="team-role">Қаржы маманы · Есепші</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#c9a84c;color:#1a3a1f;">Б</div>
+        <div class="team-name">Болатхан</div>
+        <div class="team-role">IT · Дизайн, Cайт әзірлеуші</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#3a6b40;">Н</div>
+        <div class="team-name">Нұржан</div>
+        <div class="team-role">IT · Бағдарламалаушы</div>
+      </div>
+    </div>
+    <div class="tg-box">
+      <div class="tg-qr">🤖</div>
+      <div class="tg-info">
+        <h4>EcoCircle Telegram боты</h4>
+        <p>Тіркеліңіз, балл жинаңыз және марапат алыңыз — тікелей Telegram арқылы!</p>
+        <a href="https://t.me/ecocircle_kbtu_bot" target="_blank" class="tg-link">✈️ @ecocircle_kbtu_bot →</a>
+      </div>
+    </div>
+    <div class="contact-box">
+      <div style="flex:1;">
+        <h3>Бізбен байланысыңыз</h3>
+        <p>📧 ecocircle@kbtu.edu.kz<br>📸 @ecocircle_kbtu<br>✈️ @ecocircle_kbtu_bot</p>
+      </div>
+      <a href="mailto:ecocircle@kbtu.edu.kz" class="btn-primary">Хат жіберу →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>EcoCircle KBTU</strong> — Жасыл болашақ бізден басталады · 2026<br>
+  <span style="font-size:0.75rem;margin-top:4px;display:block;">SDG 12 · ESG · KBTU жобасы · Made with 💚</span>
+</footer>
+
+<script>
+// ============================================================
+// FULL PAGE CANVAS — жапырақтар + құстар (8 сек сайын)
+// ============================================================
+(function () {
+  const cv = document.getElementById('bg-canvas');
+  const cx = cv.getContext('2d');
+  let W, H, DPR = window.devicePixelRatio || 1;
+
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    cv.width  = W * DPR;
+    cv.height = H * DPR;
+    cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const greens = [
+    '#1a3a1f','#243f28','#2d6a35','#3a7a40','#4a9e55',
+    '#56b063','#2a5530','#386e3e','#1e4a23','#447a4b',
+    '#5db865','#3d8b44','#285e2e','#4f9657','#346b3b'
+  ];
+
+  // --- Жапырақ пішіндері ---
+  function drawPointed(x, y, s, a, col, op) {
+    cx.save(); cx.translate(x, y); cx.rotate(a); cx.globalAlpha = op;
+    cx.beginPath();
+    cx.moveTo(0, -s);
+    cx.bezierCurveTo( s*.65, -s*.55,  s*.72, s*.15, 0, s*.55);
+    cx.bezierCurveTo(-s*.72,  s*.15, -s*.65,-s*.55, 0,  -s);
+    cx.fillStyle = col; cx.fill();
+    cx.beginPath(); cx.moveTo(0,-s*.88); cx.quadraticCurveTo(s*.08, 0, 0, s*.5);
+    cx.strokeStyle = 'rgba(255,255,255,0.22)'; cx.lineWidth = 0.9; cx.stroke();
+    for (let i = 0; i < 3; i++) {
+      const t2 = 0.25 + i * 0.2, py = -s*.7 + s*1.2*t2;
+      cx.beginPath(); cx.moveTo(0, py); cx.lineTo(s*.35*Math.sin(Math.PI*t2), py+s*.15);
+      cx.strokeStyle = 'rgba(255,255,255,0.12)'; cx.lineWidth = 0.6; cx.stroke();
+      cx.beginPath(); cx.moveTo(0, py); cx.lineTo(-s*.35*Math.sin(Math.PI*t2), py+s*.15); cx.stroke();
+    }
+    cx.restore();
+  }
+
+  function drawMaple(x, y, s, a, col, op) {
+    cx.save(); cx.translate(x, y); cx.rotate(a); cx.globalAlpha = op;
+    cx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const ang = i * Math.PI / 5 - Math.PI / 2;
+      const r   = i % 2 === 0 ? s : s * .45;
+      i === 0 ? cx.moveTo(Math.cos(ang)*r, Math.sin(ang)*r)
+              : cx.lineTo(Math.cos(ang)*r, Math.sin(ang)*r);
+    }
+    cx.closePath(); cx.fillStyle = col; cx.fill(); cx.restore();
+  }
+
+  function drawOak(x, y, s, a, col, op) {
+    cx.save(); cx.translate(x, y); cx.rotate(a); cx.globalAlpha = op;
+    cx.beginPath(); cx.moveTo(0, -s);
+    for (let i = 0; i < 8; i++) {
+      const ang = -Math.PI/2 + ((i+1)/8)*Math.PI*1.8;
+      const b   = s * (0.55 + 0.25 * Math.sin(i * 2.3));
+      cx.lineTo(Math.cos(ang)*b, Math.sin(ang)*b);
+    }
+    cx.closePath(); cx.fillStyle = col; cx.fill();
+    cx.beginPath(); cx.moveTo(0,-s*.9); cx.quadraticCurveTo(s*.05, 0, 0, s*.5);
+    cx.strokeStyle = 'rgba(255,255,255,0.2)'; cx.lineWidth = 0.8; cx.stroke();
+    cx.restore();
+  }
+
+  const leafFns = [drawPointed, drawMaple, drawOak];
+
+  function rndLeaf(randomY) {
+    const pageH = Math.max(document.body.scrollHeight, 3000);
+    return {
+      x:   Math.random() * 1800,
+      y:   randomY ? Math.random() * pageH : -80 - Math.random() * 200,
+      s:   7  + Math.random() * 24,
+      a:   Math.random() * Math.PI * 2,
+      col: greens[Math.floor(Math.random() * greens.length)],
+      op:  0.07 + Math.random() * 0.22,
+      vx:  (Math.random() - .5) * .18,
+      vy:  .1  + Math.random() * .25,
+      va:  (Math.random() - .5) * .012,
+      sw:  Math.random() * Math.PI * 2,
+      swS: .005 + Math.random() * .012,
+      swA: .4  + Math.random() * 1.1,
+      fn:  leafFns[Math.floor(Math.random() * leafFns.length)]
+    };
+  }
+
+  // Үлкен статикалық фондық жапырақтар — бүкіл беттің биіктігіне таралған
+  const PAGE_H = Math.max(document.body.scrollHeight, 5000);
+  const bgLeaves = Array.from({ length: 65 }, () => ({
+    x:   Math.random() * 1800,
+    y:   Math.random() * PAGE_H,
+    s:   50 + Math.random() * 90,
+    a:   Math.random() * Math.PI * 2,
+    col: greens[Math.floor(Math.random() * greens.length)],
+    op:  0.025 + Math.random() * 0.045,
+    fn:  leafFns[Math.floor(Math.random() * leafFns.length)]
+  }));
+
+  // Ұшып жүрген жапырақтар
+  const leaves = Array.from({ length: 120 }, () => rndLeaf(true));
+
+  // --- Құс ---
+  function drawBird(x, y, size, phase, col, op) {
+    cx.save(); cx.translate(x, y); cx.globalAlpha = op;
+    const flap = Math.sin(phase) * 0.5;
+    cx.beginPath();
+    cx.moveTo(0, 0);
+    cx.quadraticCurveTo(-size*.55, -size*.3 + flap*size*.6, -size, flap*size*.5);
+    cx.moveTo(0, 0);
+    cx.quadraticCurveTo( size*.55, -size*.3 + flap*size*.6,  size, flap*size*.5);
+    cx.strokeStyle = col; cx.lineWidth = size*.13; cx.lineCap = 'round'; cx.stroke();
+    cx.beginPath(); cx.arc(0, 0, size*.08, 0, Math.PI*2); cx.fillStyle = col; cx.fill();
+    cx.restore();
+  }
+
+  function mkFlock() {
+    const dir   = Math.random() > .5 ? 1 : -1;
+    const startX = dir === 1 ? -140 : W + 140;
+    const y     = 40 + Math.random() * (H * .62);
+    const speed = 0.55 + Math.random() * .6;
+    const size  = 5 + Math.random() * 7;
+    const count = 3 + Math.floor(Math.random() * 6);
+    const col   = `rgba(${28+Math.floor(Math.random()*25)},${50+Math.floor(Math.random()*25)},${30+Math.floor(Math.random()*20)},1)`;
+    const birds = [];
+    for (let i = 0; i < count; i++) {
+      const side = i === 0 ? 0 : (i % 2 === 1 ? -1 : 1);
+      const rank = Math.ceil(i / 2);
+      birds.push({
+        fx: side * rank * size * 2.2,
+        fy: rank * size * 1.4,
+        phase: Math.random() * Math.PI * 2,
+        phaseSpd: 0.07 + Math.random() * .06
+      });
+    }
+    return { x: startX, y, dir, speed, size, col, birds, op: 0.5 + Math.random()*.45, done: false };
+  }
+
+  const flocks = [];
+  let tick = 0, lastFlockTS = 0;
+  flocks.push(mkFlock()); // Бірінші үйір бірден
+
+  function frame(ts) {
+    tick++;
+
+    // Құстар 8 секунд сайын
+    if (ts - lastFlockTS > 8000) {
+      flocks.push(mkFlock());
+      lastFlockTS = ts;
+    }
+
+    cx.clearRect(0, 0, W, H);
+
+    // Аспан градиенті
+    const g = cx.createLinearGradient(0, 0, W, H);
+    g.addColorStop(0,  '#f0f7f0');
+    g.addColorStop(.4, '#faf8f2');
+    g.addColorStop(1,  '#eaf5e8');
+    cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+
+    // Жарық орталығы
+    const rad = cx.createRadialGradient(W*.5, H*.35, 0, W*.5, H*.35, W*.65);
+    rad.addColorStop(0, 'rgba(255,255,255,0.28)');
+    rad.addColorStop(1, 'rgba(255,255,255,0)');
+    cx.fillStyle = rad; cx.fillRect(0, 0, W, H);
+
+    const scrollY = window.scrollY;
+
+    // Үлкен фондық жапырақтар — параллакс 0.4
+    for (const l of bgLeaves) {
+      const sy = l.y - scrollY * 0.4;
+      if (sy > -200 && sy < H + 200) l.fn(l.x % W, sy, l.s, l.a, l.col, l.op);
+    }
+
+    // Қалқып жүрген жапырақтар
+    for (const l of leaves) {
+      l.sw += l.swS;
+      l.x  += l.vx + Math.sin(l.sw) * l.swA * 0.06;
+      l.y  += l.vy;
+      l.a  += l.va;
+      const sy = l.y - scrollY;
+      if (sy > H + 80) { l.y = scrollY - 80; l.x = Math.random() * W; }
+      if (l.x < -70)  l.x = W + 70;
+      if (l.x > W+70) l.x = -70;
+      if (sy > -80 && sy < H+80) l.fn(l.x, sy, l.s, l.a, l.col, l.op);
+    }
+
+    // Құстар
+    for (const f of flocks) {
+      f.x += f.dir * f.speed;
+      f.y += Math.sin(tick * 0.012 + f.x * 0.005) * 0.18;
+      for (const b of f.birds) {
+        b.phase += b.phaseSpd;
+        drawBird(f.x + b.fx * f.dir, f.y + b.fy, f.size, b.phase, f.col, f.op);
+      }
+      if (f.dir ===  1 && f.x > W + 160) f.done = true;
+      if (f.dir === -1 && f.x < -160)    f.done = true;
+    }
+    for (let i = flocks.length - 1; i >= 0; i--) if (flocks[i].done) flocks.splice(i, 1);
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+// ============================================================
+// NAV
+// ============================================================
+const mainNav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20));
+
+// ============================================================
+// HAMBURGER
+// ============================================================
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+});
+function closeMobile() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('open');
+}
+
+// ============================================================
+// FAQ
+// ============================================================
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+
+// ============================================================
+// CALCULATOR
+// ============================================================
+const plasticSlider = document.getElementById('plastic-slider');
+const paperSlider   = document.getElementById('paper-slider');
+const plasticVal    = document.getElementById('plastic-val');
+const paperVal      = document.getElementById('paper-val');
+const coinResult    = document.getElementById('coin-result');
+const rewardHint    = document.getElementById('reward-hint');
+const coinEquiv     = document.getElementById('coin-equiv');
+
+function updateCalc() {
+  const plastic = parseFloat(plasticSlider.value);
+  const paper   = parseFloat(paperSlider.value);
+  plasticVal.textContent = plastic;
+  paperVal.textContent   = paper;
+  const coins = Math.round(plastic * 10 + paper * 5);
+  coinResult.textContent = coins + ' 🪙';
+  let hint = '', equiv = '';
+  if      (coins >= 500) { hint = '🏆 Чемпион болуға жетесіз!';                      equiv = 'Эко-чемпион атағы 🏆'; }
+  else if (coins >= 200) { hint = '🎽 Сыйлық алуға болады!';                         equiv = 'EcoCircle сыйлығы 🎽'; }
+  else if (coins >= 100) { hint = '📚 Кітапхана мерзімін ұзатыңыз!';                 equiv = 'Кітапхана жеңілдігі 📚'; }
+  else if (coins >=  50) { hint = '☕ Кофеге жеңілдік аласыз!';                      equiv = 'Кофе жеңілдігі ☕'; }
+  else                   { hint = `${50-coins} Coin жинасаңыз — кофеге жеңілдік!`;   equiv = 'Жинай беріңіз… 💪'; }
+  rewardHint.textContent = hint;
+  coinEquiv.textContent  = equiv;
+}
+plasticSlider.addEventListener('input', updateCalc);
+paperSlider.addEventListener('input', updateCalc);
+updateCalc();
+
+// ============================================================
+// COUNTUP
+// ============================================================
+function startCountup(el) {
+  if (el.dataset.done) return;
+  el.dataset.done = '1';
+  const target   = parseFloat(el.dataset.target);
+  const suffix   = el.dataset.suffix || '';
+  const duration = 1500;
+  const start    = performance.now();
+  function step(now) {
+    const p    = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+setTimeout(() => document.querySelectorAll('#home .countup').forEach(startCountup), 600);
+
+// ============================================================
+// INTERSECTION OBSERVER — fade-in + countup
+// ============================================================
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.countup').forEach(startCountup);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const lbObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.querySelectorAll('.countup').forEach(startCountup); });
+}, { threshold: 0.2 });
+document.querySelectorAll('#leaderboard').forEach(el => lbObs.observe(el));
+
+// ============================================================
+// PROGRESS BAR
+// ============================================================
+function triggerProgress() {
+  const fill  = document.getElementById('progress-fill');
+  const numEl = document.getElementById('prog-num');
+  if (!fill || fill.dataset.done) return;
+  fill.dataset.done = '1';
+  const target = 250, pct = (target / 500) * 100;
+  setTimeout(() => {
+    fill.style.width = pct + '%';
+    let cur = 0;
+    const iv = setInterval(() => {
+      cur += 5;
+      if (cur >= target) { cur = target; clearInterval(iv); }
+      numEl.textContent = cur;
+    }, 1500 / (target / 5));
+  }, 300);
+}
+setTimeout(triggerProgress, 800);
+</script>
+</body>
+</html>
